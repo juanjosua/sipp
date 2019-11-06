@@ -36,8 +36,14 @@
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a tabindex="-1" href="login.html">Logout</a>
+                                        <a onclick="event.preventDefault();
+                                            $('#logout-form').submit();">
+                                        Logout</a>
                                     </li>
+                                    
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </ul>
                             </li>
                         </ul>

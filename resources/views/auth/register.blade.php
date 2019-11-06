@@ -1,61 +1,77 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Register</title>
-    <!-- Bootstrap -->
-    <link href="{{ asset('template/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('template/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('template/assets/styles.css') }}" rel="stylesheet" media="screen">
-     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script src="{{ asset('template/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
-  </head>
-  <body id="login">
-    <div class="container">
+@extends('layouts.app')
 
-	    <form class="form-signin" method="POST" action="{{ route('register') }}">
-	      	@csrf
-	        <h2 class="form-signin-heading">Register</h2>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Register') }}</div>
 
-	        <!-- nama -->
-	        <input id="name" type="text" class="input-block-level @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
 
-			@error('name')
-	            <span class="invalid-feedback" role="alert">
-	                <strong>{{ $message }}</strong>
-	            </span>
-	        @enderror
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-	        <!-- email -->
-	        <input id="email" type="email" class="input-block-level @error('email') is-invalid @enderror" name="email" placeholder="Email address" value="{{ old('email') }}" required autocomplete="email">
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-			@error('email')
-	            <span class="invalid-feedback" role="alert">
-	                <strong>{{ $message }}</strong>
-	            </span>
-	        @enderror
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
-	        <!-- password -->
-	        <input id="password" type="password" class="input-block-level @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-			@error('password')
-	            <span class="invalid-feedback" role="alert">
-	                <strong>{{ $message }}</strong>
-	            </span>
-	        @enderror
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-	        <!-- confirm password -->
-	        <input id="password-confirm" type="password" class="input-block-level" name="password_confirmation" placeholder="Password" required autocomplete="new-password">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
-	        <button class="btn btn-large btn-primary" type="submit">Register</button>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-	    </form>
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-    </div> <!-- /container -->
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
-    <script src="{{ asset('template/vendors/jquery-1.9.1.min.js') }}"></script>
-    <script src="{{ asset('template/bootstrap/js/bootstrap.min.js') }}"></script>
-  </body>
-</html>
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
