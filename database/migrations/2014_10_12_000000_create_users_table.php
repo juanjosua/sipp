@@ -17,6 +17,16 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
+
+            $table->string('gender')->nullable();
+            $table->string('pob')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('phone')->nullable();
+            $table->string('status')->nullable();
+
+            $table->boolean('admin')->default(false); //status admin
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
