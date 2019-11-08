@@ -22,26 +22,24 @@ var FormValidation = function () {
                         required: true,
                         email: true
                     },
-                    url: {
+                    gender: {
+                        required: true
+                    },
+                    pob: {
+                        required: true
+                    },
+                    dob: {
+                        required: true
+                    },
+                    phone: {
                         required: true,
-                        url: true
+                        number: true,
+                        minlength: 11
                     },
-                    number: {
-                        required: true,
-                        number: true
+                    status: {
+                        required: true
                     },
-                    digits: {
-                        required: true,
-                        digits: true
-                    },
-                    creditcard: {
-                        required: true,
-                        creditcard: true
-                    },
-                    occupation: {
-                        minlength: 5,
-                    },
-                    category: {
+                    address: {
                         required: true
                     }
                 },
@@ -70,10 +68,10 @@ var FormValidation = function () {
                     .closest('.control-group').removeClass('error').addClass('success'); // set success class to the control group
                 },
 
-                submitHandler: function (form) {
-                    success1.show();
-                    error1.hide();
-                }
+                // submitHandler: function (form) {
+                //     success1.show();
+                //     error1.hide();
+                // }
             });
     }
 

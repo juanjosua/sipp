@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('pob')->nullable();
             $table->date('dob')->nullable();
             $table->string('address')->nullable();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->string('status')->nullable();
 
             $table->boolean('admin')->default(false); //status admin

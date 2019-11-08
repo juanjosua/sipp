@@ -18,8 +18,8 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-Route::get('/index', 'HomeController@dashboard')->name('index')->middleware('verified');
+Route::get('/index', 'HomeController@olddashboard')->name('index')->middleware('verified');
 
-Route::get('profile', function () {
-    // Only verified users may enter...
-})->middleware('verified');
+//profile route
+Route::get('/profile', 'ProfileController@index')->name('profile')->middleware('verified');
+Route::patch('/profile/update/{id}', 'ProfileController@update');

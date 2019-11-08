@@ -15,7 +15,7 @@
                     @endif
 
                     <p style="display:block;">You will be redirected in <span class="countdown">5</span> !</p>
-                    <a class="hidden" style="display:none;" href="{{ route('index') }}">Click here if you are not automatically redirected</a>
+                    <a class="hidden" style="display:none;" href="{{ route('profile') }}">Click here if you are not automatically redirected</a>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
         setInterval(doUpdate, 1000);
 
         var timer = setTimeout(function() {
-            window.location='{{ route('index') }}';
+            window.location='{{ route('profile') }}';
         }, 6000);
 
         var timer = setTimeout(function() {
