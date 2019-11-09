@@ -2,82 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Pelatihan;
 use Illuminate\Http\Request;
 
 class PelatihanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // tampilkan halaman pelatihan
     public function index()
     {
-        return view('pelatihan');
+        // untuk admin admin semua daftar pelatihan user
+        // untuk user biasa daftar pelatihan yang pernah diikutinya
+        if (Auth::user()->admin == false) {
+            $pelatihans =  Pelatihan::all()->where('user_id', Auth::user()->id);
+            if( $pelatihans->count() == 0 ){
+                return redirect()->route('add-pelatihan');
+            }
+        } else { 
+            $pelatihans =  Pelatihan::all();
+        }
+
+        return view('pelatihan', compact('pelatihans'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // halaman tambah pelatihan
     public function create()
     {
-        //
+        return view('tambahPelatihan');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // simpan pelatihan yang baru
     public function store(Request $request)
     {
-        //
+        $id = Auth::user()->id;
+        $pelatihan = Pelatihan::create([
+            'jenis'             => $request->input('jenis'),
+            'tempat'            => $request->input('tempat'),
+            'waktu'             => $request->input('waktu'),
+            'pelaksana'		    => $request->input('pelaksana'),
+            'sertif'			=> $request->input('sertif'),
+            'user_id'		    => $id
+        ]);
+
+        if ($request->input('jenis') == "Teknis Pelayanan") {
+            return redirect()->route('teknis', [$request, $pelatihan]);
+        } elseif ($request->input('jenis') == "Manajemen") {
+            return redirect()->route('manajemen', [$request, $pelatihan]);
+        } else {
+            return redirect()->route('generasi', [$request, $pelatihan]);
+        } 
+      
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Pelatihan  $pelatihan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pelatihan $pelatihan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Pelatihan  $pelatihan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pelatihan $pelatihan)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pelatihan  $pelatihan
-     * @return \Illuminate\Http\Response
-     */
+    // simpan perubahan pelatihan
     public function update(Request $request, Pelatihan $pelatihan)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Pelatihan  $pelatihan
-     * @return \Illuminate\Http\Response
-     */
+    // hapus pelatihan
     public function destroy(Pelatihan $pelatihan)
     {
         //

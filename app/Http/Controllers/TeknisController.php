@@ -7,57 +7,25 @@ use Illuminate\Http\Request;
 
 class TeknisController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // buat pelatihan teknis baru
     public function store(Request $request)
     {
-        //
-    }
+        if( $request->input ){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Teknis  $teknis
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Teknis $teknis)
-    {
-        //
-    }
+        } else {
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Teknis  $teknis
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Teknis $teknis)
-    {
-        //
+        }
+
+        Teknis::create([
+            'jenis'             => $request->input('jenis'),
+            'tempat'            => $request->input('tempat'),
+            'waktu'             => $request->input('waktu'),
+            'pelaksana'		    => $request->input('pelaksana'),
+            'sertif'			=> $request->input('sertif'),
+            'user_id'		    => $id
+        ]);
+
+        return redirect()->route('pelatihan')->with('message', 'success');
     }
 
     /**

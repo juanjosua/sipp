@@ -53,7 +53,7 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="nav-button active">
+                        <li class="nav-button {{ Route::is('profile') ? 'active' : '' }}">
                             <a class="nav-btn-a" href="{{ url('/profile') }}"><i class="icon-chevron-right"></i> Profile</a>
                         </li>
                         <li class="nav-button">
@@ -135,13 +135,15 @@
         <script>
 
             $(".nav-button").click(function () {
+                // $(".nav-button").removeClass("active");
+                // $(".tab").addClass("active"); // instead of this do the below
                 $(".nav-button").removeClass("active");
-                // $(".tab").addClass("active"); // instead of this do the below 
                 $(this).addClass("active");
             });
 
         </script>
         <script>
+            // load page without refresh
             $('.nav-btn-a').click(function (event) {
                 // Avoid the link click from loading a new page
                 event.preventDefault();
@@ -149,7 +151,8 @@
                 // Load the content from the link's href attribute
                 // load href content section to yield content section
                 $('#content').load($(this).attr('href') + " #content", function(){
-
+                    
+                    // profile page
                     $("#edit-button").click(function() {
                         $("#profile").css('display', 'none');
                         $("#edit-profile").css('display', 'block');
@@ -158,6 +161,22 @@
                     $("#reset").click(function() {
                         $("#profile").css('display', 'block');
                         $("#edit-profile").css('display', 'none');
+                    });
+
+                    // pelatihan page
+                    $('#jenis').change(function() {
+                        var value = $(this).val();
+                        if (value  ==  "Teknis Pelayanan"){
+                            $("#teknis").css("display", "block");
+                            $("#jenjang").css("display", "block");
+                        }
+                    });
+
+                    $('#teknis_pelatihan').change(function() {
+                        var value = $(this).val();
+                        if (value  ==  "Penyuluh"){
+                            $("#penyuluh").css("display", "block");
+                        }
                     });
 
                 });

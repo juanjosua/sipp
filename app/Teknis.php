@@ -9,7 +9,7 @@ class Teknis extends Model
     protected $table = 'teknis';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nama_pelatihan', 'jenjang', 'pelatihan_id', 'pelaporan_id'
+        'nama_pelatihan', 'tipe_penyuluh', 'jenjang', 'pelatihan_id', 'pelaporan_id'
     ];
 
     public function pelatihan()

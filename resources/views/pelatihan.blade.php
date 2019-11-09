@@ -10,38 +10,44 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Striped Table</div>
+                                <div class="muted pull-left">Jenis pelatihan yang pernah diikuti</div>
                             </div>
+
+							<div id="success" class="alert alert-success hide">
+								<button class="close" data-dismiss="alert"></button>
+								Your form validation is successful!
+                        	</div>
+
                             <div class="block-content collapse in">
                                 <div class="span12">
   									<table class="table table-striped">
 						              <thead>
 						                <tr>
-						                  <th>#</th>
-						                  <th>First Name</th>
-						                  <th>Last Name</th>
-						                  <th>Username</th>
+						                  <th>Nomor</th>
+						                  <th>Jenis pelatihan</th>
+						                  <th>Jenjang pelatihan</th>
+										  <th>Tempat pelaksanaan</th>
+						                  <th>Waktu pelaksanaan</th>
+										  <th>Pelaksanan</th>
+						                  <th>Nomor sertifikat</th>
 						                </tr>
 						              </thead>
 						              <tbody>
-						                <tr>
-						                  <td>1</td>
-						                  <td>Mark</td>
-						                  <td>Otto</td>
-						                  <td>@mdo</td>
-						                </tr>
-						                <tr>
-						                  <td>2</td>
-						                  <td>Jacob</td>
-						                  <td>Thornton</td>
-						                  <td>@fat</td>
-						                </tr>
-						                <tr>
-						                  <td>3</td>
-						                  <td>Larry</td>
-						                  <td>the Bird</td>
-						                  <td>@twitter</td>
-						                </tr>
+										@foreach($pelatihans as $pelatihan)
+											<tr>
+												<td></td>
+												<td>{{$pelatihan->jenis}}</td>
+												@if( $pelatihan->jenis == 'Teknis' )
+													<td>{{ $pelatihan->teknis->jenjang }}</td>
+												@else
+													<td> - </td>
+												@endif
+												<td>{{$pelatihan->tempat}}</td>
+												<td>{{$pelatihan->waktu}}</td>
+												<td>{{$pelatihan->pelaksana}}</td>
+												<td>{{$pelatihan->sertif}}</td>
+											</tr>
+										@endforeach
 						              </tbody>
 						            </table>
                                 </div>
@@ -51,4 +57,17 @@
                     </div>
                     
                 </div>
+
+	<!-- message for success update profile -->
+	@if (session()->has('message'))
+
+	<script>
+		$("#success").removeClass("hide");
+		var timer = setTimeout(function() {
+			$("#success").addClass("hide");
+		}, 2000);
+	</script>
+
+	@endif
+	
 @endsection

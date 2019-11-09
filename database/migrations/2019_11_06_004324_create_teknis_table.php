@@ -17,6 +17,7 @@ class CreateTeknisTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('nama_pelatihan');
+            $table->string('tipe_penyuluh')->nullable();
             $table->string('jenjang');
 
             $table->bigInteger('pelatihan_id')->unsigned()->index()->nullable();
