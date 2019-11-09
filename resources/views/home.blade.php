@@ -43,8 +43,6 @@
             $('p').css("display", "none");
             $('.hidden').css("display", "block");
         }, 3000);
-
-
     </script>
 
 @endsection

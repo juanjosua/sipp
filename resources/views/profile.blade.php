@@ -16,6 +16,11 @@
                     <fieldset>
                       <legend>Data diri Anda</legend>
 
+                      <div id="success" class="alert alert-success hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        Your form validation is successful!
+                      </div>
+
                       <div class="control-group">
                         <label class="control-label" for="focusedInput">Nama lengkap</label>
                         <div class="controls">
@@ -179,16 +184,29 @@
 
 </div>
 
-<script>
-  $("#edit-button").click(function() {
-    $("#profile").css('display', 'none');
-    $("#edit-profile").css('display', 'block');
-  });
+  <!-- message for success update profile -->
+  @if (session()->has('message'))
 
-  $("#reset").click(function() {
-    $("#profile").css('display', 'block');
-    $("#edit-profile").css('display', 'none');
-  });
-</script>
+    <script>
+        $("#success").removeClass("hide");
+        var timer = setTimeout(function() {
+            $("#success").addClass("hide");
+        }, 2000);
+    </script>
+
+  @endif
+
+  <!-- display edit profile form -->
+  <script>
+    $("#edit-button").click(function() {
+      $("#profile").css('display', 'none');
+      $("#edit-profile").css('display', 'block');
+    });
+
+    $("#reset").click(function() {
+      $("#profile").css('display', 'block');
+      $("#edit-profile").css('display', 'none');
+    });
+  </script>
 
 @endsection

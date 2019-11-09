@@ -23,3 +23,6 @@ Route::get('/index', 'HomeController@olddashboard')->name('index')->middleware('
 //profile route
 Route::get('/profile', 'ProfileController@index')->name('profile')->middleware('verified');
 Route::patch('/profile/update/{id}', 'ProfileController@update');
+
+//route pelatihan
+Route::get('/pelatihan', 'PelatihanController@index')->name('pelatihan')->middleware('verified');

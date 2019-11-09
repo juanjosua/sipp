@@ -7,6 +7,7 @@
         <link href="{{ asset('template/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('template/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('template/assets/styles.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('template/assets/DT_bootstrap.css') }}" rel="stylesheet" media="screen">
         <script src="{{ asset('template/vendors/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
@@ -52,17 +53,17 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="active">
-                            <a href="{{ url('/profile') }}"><i class="icon-chevron-right"></i> Profile</a>
+                        <li class="nav-button active">
+                            <a class="nav-btn-a" href="{{ url('/profile') }}"><i class="icon-chevron-right"></i> Profile</a>
                         </li>
-                        <li>
-                            <a href="stats.html"><i class="icon-chevron-right"></i> Pelatihan</a>
+                        <li class="nav-button">
+                            <a class="nav-btn-a" href="{{ url('/pelatihan') }}"><i class="icon-chevron-right"></i> Pelatihan</a>
                         </li>
-                        <li>
-                            <a href="form.html"><i class="icon-chevron-right"></i> Pelaporan</a>
+                        <li class="nav-button">
+                            <a class="nav-btn-a" href="form.html"><i class="icon-chevron-right"></i> Pelaporan</a>
                         </li>
-                        <li>
-                            <a href="tables.html"><i class="icon-chevron-right"></i> Users</a>
+                        <li class="nav-button">
+                            <a class="nav-btn-a" href="tables.html"><i class="icon-chevron-right"></i> Users</a>
                         </li>
                         
                     </ul>
@@ -96,13 +97,14 @@
         <script src="{{ asset('template/assets/form-validation.js') }}"></script>
             
         <script src="{{ asset('template/assets/scripts.js') }}"></script>
+
+        <script src="{{ asset('template/vendors/datatables/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('template/assets/DT_bootstrap.js') }}"></script>
         <script>
 
         jQuery(document).ready(function() {   
         FormValidation.init();
         });
-        
-
             $(function() {
                 $(".datepicker").datepicker();
                 $(".uniform_on").uniform();
@@ -130,6 +132,38 @@
                 });
             });
         </script>
+        <script>
+
+            $(".nav-button").click(function () {
+                $(".nav-button").removeClass("active");
+                // $(".tab").addClass("active"); // instead of this do the below 
+                $(this).addClass("active");
+            });
+
+        </script>
+        <script>
+            $('.nav-btn-a').click(function (event) {
+                // Avoid the link click from loading a new page
+                event.preventDefault();
+
+                // Load the content from the link's href attribute
+                // load href content section to yield content section
+                $('#content').load($(this).attr('href') + " #content", function(){
+
+                    $("#edit-button").click(function() {
+                        $("#profile").css('display', 'none');
+                        $("#edit-profile").css('display', 'block');
+                    });
+
+                    $("#reset").click(function() {
+                        $("#profile").css('display', 'block');
+                        $("#edit-profile").css('display', 'none');
+                    });
+
+                });
+            });
+        </script>
+
     </body>
 
 </html>
