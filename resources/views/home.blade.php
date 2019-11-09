@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <p style="display:block;">You will be redirected in <span class="countdown">5</span> !</p>
+                    <p style="display:block;">You will be redirected in <span class="countdown">3</span> !</p>
                     <a class="hidden" style="display:none;" href="{{ route('profile') }}">Click here if you are not automatically redirected</a>
                 </div>
             </div>
@@ -37,12 +37,12 @@
 
         var timer = setTimeout(function() {
             window.location='{{ route('profile') }}';
-        }, 6000);
+        }, 4000);
 
         var timer = setTimeout(function() {
             $('p').css("display", "none");
             $('.hidden').css("display", "block");
-        }, 5000);
+        }, 3000);
 
 
     </script>

@@ -4,7 +4,87 @@
 <!--/span-->
 <div class="span9" id="content">
 
-      <div class="row-fluid">
+  <div id="profile" style="display: block;" class="row-fluid">
+      <!-- block -->
+      <div class="block">
+          <div class="navbar navbar-inner block-header">
+              <div class="muted pull-left">Profie</div>
+          </div>
+          <div class="block-content collapse in">
+              <div class="span12">
+                    <form class="form-horizontal">
+                    <fieldset>
+                      <legend>Data diri Anda</legend>
+
+                      <div class="control-group">
+                        <label class="control-label" for="focusedInput">Nama lengkap</label>
+                        <div class="controls">
+                          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ Auth::user()->name }}" disabled>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="focusedInput">Alamat email</label>
+                        <div class="controls">
+                          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ Auth::user()->email }}" disabled>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="focusedInput">Jenis kelamin</label>
+                        <div class="controls">
+                          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ Auth::user()->gender }}" disabled>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="focusedInput">Tempat lahir</label>
+                        <div class="controls">
+                          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ Auth::user()->pob }}" disabled>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="focusedInput">Tanggal lahir</label>
+                        <div class="controls">
+                          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ Auth::user()->dob }}" disabled>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="focusedInput">Nomor telepon</label>
+                        <div class="controls">
+                          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ Auth::user()->phone }}" disabled>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="focusedInput">Status di PMI</label>
+                        <div class="controls">
+                          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ Auth::user()->status }}" disabled>
+                        </div>
+                      </div>
+
+                      <div class="control-group">
+                        <label class="control-label" for="focusedInput">Alamat</label>
+                        <div class="controls">
+                          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{ Auth::user()->address }}" disabled>
+                        </div>
+                      </div>
+
+                      <div class="form-actions">
+                        <a id="edit-button" class="btn btn-primary">Edit</a>
+                      </div>
+
+                    </fieldset>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <!-- /block -->
+  </div>
+
+      <div id="edit-profile" class="row-fluid" style="display: none;">
         <!-- block -->
         <div class="block">
             <div class="navbar navbar-inner block-header">
@@ -16,7 +96,7 @@
                     {{ csrf_field() }}
                     {{method_field('PATCH')}}
                       <fieldset>
-                        <legend>Form Components</legend>
+                        <legend>Ubah data diri Anda</legend>
 
                         <div class="control-group">
                           <label class="control-label" for="name">Nama lengkap<span class="required">*</span> </label>
@@ -70,7 +150,7 @@
                         <div class="control-group">
                           <label class="control-label" for="select01">Status di PMI<span class="required">*</span> </label>
                           <div class="controls">
-                            <select id="select01" name="status" class="chzn-select">
+                            <select id="select01" name="status">
                               <option value="Relawan" {{ (Auth::user()->status=="Relawan")? "selected" : "" }}>Relawan</option>
                               <option value="Staf" {{ (Auth::user()->status=="Staf")? "selected" : "" }}>Staf</option>
                             </select>
@@ -80,13 +160,13 @@
                         <div class="control-group">
                           <label class="control-label" for="textarea">Alamat<span class="required">*</span> </label>
                           <div class="controls">
-                            <textarea name="address" value="{{ Auth::user()->address }}" class="input-xlarge textarea" placeholder="Masukkan alamat..." style="width: 810px; height: 200px"></textarea>
+                            <textarea name="address" class="input-xlarge textarea" style="width: 810px; height: 200px">{{ Auth::user()->address }}</textarea>
                           </div>
                         </div>
                         
                         <div class="form-actions">
                           <button type="submit" class="btn btn-primary">Save changes</button>
-                          <button type="reset" class="btn">Cancel</button>
+                          <button id="reset" type="reset" class="btn">Cancel</button>
                         </div>
                       </fieldset>
                     </form>
@@ -98,4 +178,17 @@
     </div>
 
 </div>
+
+<script>
+  $("#edit-button").click(function() {
+    $("#profile").css('display', 'none');
+    $("#edit-profile").css('display', 'block');
+  });
+
+  $("#reset").click(function() {
+    $("#profile").css('display', 'block');
+    $("#edit-profile").css('display', 'none');
+  });
+</script>
+
 @endsection

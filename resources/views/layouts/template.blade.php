@@ -8,6 +8,7 @@
         <link href="{{ asset('template/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('template/assets/styles.css') }}" rel="stylesheet" media="screen">
         <script src="{{ asset('template/vendors/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     
     <body>
@@ -72,9 +73,6 @@
                 
             </div>
             <hr>
-            <footer>
-                <p>&copy; PMI 2019</p>
-            </footer>
         </div>
         <!--/.fluid-container-->
         <link href="{{ asset('template/vendors/datepicker.css') }}" rel="stylesheet" media="screen">
