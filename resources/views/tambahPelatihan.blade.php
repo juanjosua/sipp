@@ -160,7 +160,6 @@
 </div>
 
 <script>
-
     $('#jenis').change(function() {
         var value = $(this).val();
         if (value  ==  "Teknis Pelayanan"){
@@ -199,7 +198,6 @@
             $("#penyuluh").css("display", "block");
         }
     });
-
 </script>
 
 @endsection
