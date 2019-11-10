@@ -12,13 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-Route::get('/index', 'HomeController@olddashboard')->name('index')->middleware('verified');
 
 //profile route
 Route::get('/profile', 'ProfileController@index')->name('profile')->middleware('verified');
