@@ -24,13 +24,10 @@
 </head>
 <body>
     <div id="app">
-
-    <br>
-    <br>
-    <br>
     <br>
     <br>
 
+    <img style="display: block; margin-left:auto; margin-right:auto;" src="{{  asset('template/images/pmi.png') }}" alt="Logo PMI" width="166" height="111.2">
         <main class="py-4">
             @yield('content')
         </main>

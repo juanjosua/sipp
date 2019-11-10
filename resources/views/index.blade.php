@@ -84,8 +84,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <img src="{{  asset('template/images/pmi.png') }}" alt="Simply Easy Learning" width="332"
-         height="222.4">
+                    <img src="{{  asset('template/images/pmi.png') }}" alt="Logo PMI" width="332" height="222.4">
                 </div>
                 <div>Sistem Informasi Pelatih PMI</div>
             </div>
