@@ -63,8 +63,8 @@
                             <a class="nav-btn-a" href="{{ url('/pelaporan') }}"><i class="icon-chevron-right"></i> Pelaporan</a>
                         </li>
                         @if(Auth::user()->admin == true)
-                        <li class="nav-button">
-                            <a class="nav-btn-a" href="tables.html"><i class="icon-chevron-right"></i> Users</a>
+                        <li class="nav-button {{ Route::is('users') ? 'active' : '' }}">
+                            <a class="nav-btn-a" href="{{ url('/users') }}"><i class="icon-chevron-right"></i> Users</a>
                         </li>
                         @endif
                         

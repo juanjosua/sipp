@@ -34,6 +34,10 @@ Route::get('/pelaporan', 'PelaporanController@index')->name('pelaporan')->middle
 Route::get('/pelaporan/create', 'PelaporanController@create')->name('add-pelaporan')->middleware('verified');
 Route::post('/pelaporan/create/store', 'PelaporanController@store');
 
+//route admin
+Route::get('/users', 'AdminController@index')->name('users')->middleware('verified');
+Route::get('/users/update/{id}', 'AdminController@update');
+
 //route teknis
 Route::get('/pelatihan/teknis/store', 'TeknisController@store')->name('teknis');
 

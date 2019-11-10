@@ -15,7 +15,7 @@
 
 							<div id="success" class="alert alert-success hide">
 								<button class="close" data-dismiss="alert"></button>
-								Your form validation is successful!
+								Pelatihan berhasil ditambahkan!
                         	</div>
 
                             <div class="block-content collapse in">
