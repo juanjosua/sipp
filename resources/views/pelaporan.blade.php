@@ -10,7 +10,7 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Jenis pelatihan yang pernah diikuti</div>
+                                <div class="muted pull-left">Jenis pelatihan yang pernah diadakan</div>
                             </div>
 
 							<div id="success" class="alert alert-success hide">
@@ -23,34 +23,35 @@
   									<table class="table table-striped">
 						              <thead>
 						                <tr>
+						                  <th>Nama pelatih</th>
 						                  <th>Jenis pelatihan</th>
 						                  <th>Nama pelatihan</th>
 						                  <th>Tipe penyuluh</th>
 						                  <th>Jenjang</th>
-										  <th>Tempat</th>
+						                  <th>Tempat</th>
 						                  <th>Waktu</th>
-										  <th>Pelaksana</th>
-						                  <th>Nomor sertifikat</th>
+										  <th>Jumlah peserta</th>
 						                </tr>
 						              </thead>
 						              <tbody>
-										@foreach($pelatihans->reverse() as $pelatihan)
+										@foreach($pelaporans->reverse() as $pelaporan)
 											<tr>
-												<td>{{$pelatihan->jenis}}</td>
+												<td>{{$pelaporan->nama_pelatih}}</td>
+												<td>{{$pelaporan->jenis}}</td>
 
 												<!-- nama pelatihan -->
-												@if( $pelatihan->jenis == 'Teknis Pelayanan' )
-													<td>{{ $pelatihan->teknis->nama_pelatihan }}</td>
-												@elseif ($pelatihan->jenis == 'Manajemen')
-													<td>{{ $pelatihan->manajemen->nama_pelatihan }}</td>
+												@if( $pelaporan->jenis == 'Teknis Pelayanan' )
+													<td>{{ $pelaporan->teknis->nama_pelatihan }}</td>
+												@elseif ($pelaporan->jenis == 'Manajemen')
+													<td>{{ $pelaporan->manajemen->nama_pelatihan }}</td>
 												@else
-													<td>{{ $pelatihan->generasi->nama_pelatihan }}</td>
+													<td>{{ $pelaporan->generasi->nama_pelatihan }}</td>
 												@endif
 
 												<!-- tipe penyuluh -->
-												@if( $pelatihan->jenis == 'Teknis Pelayanan' )
-													@if( $pelatihan->teknis->nama_pelatihan == 'Penyuluh' )
-														<td>{{ $pelatihan->teknis->tipe_penyuluh }}</td>
+												@if( $pelaporan->jenis == 'Teknis Pelayanan' )
+													@if( $pelaporan->teknis->nama_pelatihan == 'Penyuluh' )
+														<td>{{ $pelaporan->teknis->tipe_penyuluh }}</td>
 													@else
 														<td> - </td>
 													@endif
@@ -59,16 +60,15 @@
 												@endif
 
 												<!-- jenjang -->
-												@if( $pelatihan->jenis == 'Teknis Pelayanan' )
-													<td>{{ $pelatihan->teknis->jenjang }}</td>
+												@if( $pelaporan->jenis == 'Teknis Pelayanan' )
+													<td>{{ $pelaporan->teknis->jenjang }}</td>
 												@else
 													<td> - </td>
 												@endif
 
-												<td>{{$pelatihan->tempat}}</td>
-												<td>{{$pelatihan->waktu}}</td>
-												<td>{{$pelatihan->pelaksana}}</td>
-												<td>{{$pelatihan->sertif}}</td>
+												<td>{{$pelaporan->tempat}}</td>
+												<td>{{$pelaporan->waktu}}</td>
+												<td>{{$pelaporan->peserta}}</td>
 											</tr>
 										@endforeach
 						              </tbody>
@@ -77,7 +77,8 @@
                             </div>
 
                             <div class="form-actions">
-	                            <a href="{{ route('add-pelatihan') }}" class="btn btn-primary">Tambah</a>
+	                            <a href="{{ route('add-pelaporan') }}" class="btn btn-primary">Tambah</a>
+	                            <a href="" class="btn btn-success">Unduh</a>
                         	</div>
 
                         </div>

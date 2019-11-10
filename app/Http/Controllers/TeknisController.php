@@ -4,28 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Teknis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TeknisController extends Controller
 {
     // buat pelatihan teknis baru
     public function store(Request $request)
     {
-        if( $request->input ){
-
+        if(Session::get('pelatihan')){
+            $pelatihan_id = Session::get('pelatihan')->id;
+            $pelaporan_id = null;
         } else {
-
+            $pelaporan_id = Session::get('pelaporan')->id;
+            $pelatihan_id = null;
         }
 
         Teknis::create([
-            'jenis'             => $request->input('jenis'),
-            'tempat'            => $request->input('tempat'),
-            'waktu'             => $request->input('waktu'),
-            'pelaksana'		    => $request->input('pelaksana'),
-            'sertif'			=> $request->input('sertif'),
-            'user_id'		    => $id
+            'nama_pelatihan'            => $request->input('nama_pelatihan'),
+            'tipe_penyuluh'             => $request->input('tipe_penyuluh'),
+            'jenjang'                   => $request->input('jenjang'),
+            'pelatihan_id'              => $pelatihan_id,
+            'pelaporan_id'              => $pelaporan_id
         ]);
 
-        return redirect()->route('pelatihan')->with('message', 'success');
+        if(Session::get('pelatihan')){
+            Session::forget('pelatihan');
+            return redirect()->route('pelatihan')->with('message', 'success');
+        } else { 
+            Session::forget('pelaporan');
+            return redirect()->route('pelaporan')->with('message', 'success');
+        }
     }
 
     /**

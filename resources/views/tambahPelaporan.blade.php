@@ -9,14 +9,21 @@
         <!-- block -->
         <div class="block">
             <div class="navbar navbar-inner block-header">
-                <div class="muted pull-left">Form pelatihan</div>
+                <div class="muted pull-left">Form pelaporan</div>
             </div>
             <div class="block-content collapse in">
                 <div class="span12">
-                    <form class="form-horizontal" method="POST" action="{{ url('pelatihan/create/store') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('pelaporan/create/store') }}">
                     @csrf
                         <fieldset>
-                        <legend>Silahkan tambahkan data pelatihan yang pernah Anda ikuti</legend>
+                        <legend>Silahkan tambahkan data pelatihan yang pernah Anda adakan</legend>
+
+                        <div class="control-group">
+                            <label class="control-label" for="focusedInput">Nama pelatih</label>
+                            <div class="controls">
+                                <input class="input-xlarge focused" id="focusedInput" type="text" name="nama_pelatih" value="{{ Auth::user()->name }}">
+                            </div>
+                        </div>
 
                         <div class="control-group">
                             <label class="control-label">Jenis pelatihan</label>
@@ -130,23 +137,16 @@
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="focusedInput">Pelaksana</label>
+                            <label class="control-label" for="focusedInput">Jumlah peserta</label>
                             <div class="controls">
-                            <input class="input-xlarge focused" id="focusedInput" type="text" name="pelaksana">
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="focusedInput">Nomor sertifikat</label>
-                            <div class="controls">
-                            <input class="input-xlarge focused" id="focusedInput" type="text" name="sertif">
+                            <input class="input-xlarge focused" id="focusedInput" type="number" name="peserta">
                             </div>
                         </div>
 
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            @if( Auth::user()->pelatihans->count() > 0 )
-                                <a href="{{ route('pelatihan') }}" class="btn">Cancel</a>
+                            @if( Auth::user()->pelaporans->count() > 0 )
+                                <a href="{{ route('pelaporan') }}" class="btn">Cancel</a>
                             @else
                                 <a class="btn" disabled>Cancel</a>
                             @endif

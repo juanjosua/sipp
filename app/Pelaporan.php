@@ -9,7 +9,7 @@ class Pelaporan extends Model
     protected $table = 'pelaporans';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nama', 'pelatihan', 'tempat', 'waktu', 'peserta', 'user_id'
+        'nama_pelatih', 'jenis', 'tempat', 'waktu', 'peserta', 'user_id'
     ];
 
     public function user()

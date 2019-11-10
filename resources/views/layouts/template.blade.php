@@ -56,15 +56,17 @@
                         <li class="nav-button {{ Route::is('profile') ? 'active' : '' }}">
                             <a class="nav-btn-a" href="{{ url('/profile') }}"><i class="icon-chevron-right"></i> Profile</a>
                         </li>
-                        <li class="nav-button">
+                        <li class="nav-button {{ Route::is('pelatihan') || Route::is('add-pelatihan') ? 'active' : '' }}">
                             <a class="nav-btn-a" href="{{ url('/pelatihan') }}"><i class="icon-chevron-right"></i> Pelatihan</a>
                         </li>
-                        <li class="nav-button">
-                            <a class="nav-btn-a" href="form.html"><i class="icon-chevron-right"></i> Pelaporan</a>
+                        <li class="nav-button {{ Route::is('pelaporan') || Route::is('add-pelaporan') ? 'active' : '' }}">
+                            <a class="nav-btn-a" href="{{ url('/pelaporan') }}"><i class="icon-chevron-right"></i> Pelaporan</a>
                         </li>
+                        @if(Auth::user()->admin == true)
                         <li class="nav-button">
                             <a class="nav-btn-a" href="tables.html"><i class="icon-chevron-right"></i> Users</a>
                         </li>
+                        @endif
                         
                     </ul>
                 </div>
@@ -142,7 +144,7 @@
             });
 
         </script>
-        <script>
+        <!-- <script>
             // load page without refresh
             $('.nav-btn-a').click(function (event) {
                 // Avoid the link click from loading a new page
@@ -181,7 +183,7 @@
 
                 });
             });
-        </script>
+        </script> -->
 
     </body>
 

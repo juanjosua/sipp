@@ -16,8 +16,8 @@ class CreatePelaporansTable extends Migration
         Schema::create('pelaporans', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->string('nama');
-            $table->string('pelatihan');
+            $table->string('nama_pelatih');
+            $table->string('jenis');
             $table->string('tempat');
             $table->date('waktu');
             $table->integer('peserta');

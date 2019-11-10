@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Pelatihan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PelatihanController extends Controller
 {
@@ -44,12 +45,14 @@ class PelatihanController extends Controller
             'user_id'		    => $id
         ]);
 
+        Session::put('pelatihan', $pelatihan);
+
         if ($request->input('jenis') == "Teknis Pelayanan") {
-            return redirect()->route('teknis', [$request, $pelatihan]);
+            return redirect()->route('teknis', $request);
         } elseif ($request->input('jenis') == "Manajemen") {
-            return redirect()->route('manajemen', [$request, $pelatihan]);
+            return redirect()->route('manajemen', $request);
         } else {
-            return redirect()->route('generasi', [$request, $pelatihan]);
+            return redirect()->route('generasi', $request);
         } 
       
     }

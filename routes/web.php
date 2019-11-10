@@ -29,11 +29,16 @@ Route::get('/pelatihan', 'PelatihanController@index')->name('pelatihan')->middle
 Route::get('/pelatihan/create', 'PelatihanController@create')->name('add-pelatihan')->middleware('verified');
 Route::post('/pelatihan/create/store', 'PelatihanController@store');
 
+//route pelaporan
+Route::get('/pelaporan', 'PelaporanController@index')->name('pelaporan')->middleware('verified');
+Route::get('/pelaporan/create', 'PelaporanController@create')->name('add-pelaporan')->middleware('verified');
+Route::post('/pelaporan/create/store', 'PelaporanController@store');
+
 //route teknis
-Route::post('/pelatihan/teknis/store', 'TeknisController@store')->name('teknis');
+Route::get('/pelatihan/teknis/store', 'TeknisController@store')->name('teknis');
 
 //route manajemen
-Route::post('/pelatihan/manajemen/store', 'ManajemenController@store')->name('manajemen');
+Route::get('/pelatihan/manajemen/store', 'ManajemenController@store')->name('manajemen');
 
 //route generasi
-Route::post('/pelatihan/generasi/store', 'GenerasiController@store')->name('generasi');
+Route::get('/pelatihan/generasi/store', 'GenerasiController@store')->name('generasi');
