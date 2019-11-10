@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SIPP') }}</title>
+    <title>SIPPMI</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- ICON -->
+    <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.pmi.or.id/templates/pmi_pusat/images/favicon.ico"/>
 </head>
 <body>
     <div id="app">

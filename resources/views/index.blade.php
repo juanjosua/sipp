@@ -2,7 +2,7 @@
 <html class="no-js">
     
     <head>
-        <title>{{Auth::user()->name}}'s Dashboard</title>
+        <title>SIPPMI</title>
         <!-- Bootstrap -->
         <link href="{{ asset('template/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('template/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
@@ -13,6 +13,8 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <script src="{{ asset('template/vendors/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+        <!-- ICON -->
+        <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.pmi.or.id/templates/pmi_pusat/images/favicon.ico"/>
     </head>
     
     <body>

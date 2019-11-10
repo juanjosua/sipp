@@ -78,7 +78,7 @@
 
                             <div class="form-actions">
 	                            <a href="{{ route('add-pelaporan') }}" class="btn btn-primary">Tambah</a>
-	                            <a href="" class="btn btn-success">Unduh</a>
+	                            <a href="{{ route('unduh-pelaporan') }}" class="btn btn-success">Unduh</a>
                         	</div>
 
                         </div>

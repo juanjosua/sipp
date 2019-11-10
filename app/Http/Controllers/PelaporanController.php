@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use PDF;
 use App\Pelaporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -57,13 +58,22 @@ class PelaporanController extends Controller
       
     }
 
-    // simpan perubahan pelatihan
+    // unduh data pelaporan
+    public function downloadPDF(Request $request)
+    {
+        $pelaporans =  Pelaporan::all();
+        $pdf = PDF::loadView('pdf', compact('pelaporans'))->setPaper('a4', 'landscape');
+        return $pdf->download('pelaporan.pdf');
+        return redirect()->back();
+    }
+
+    // simpan perubahan pelaporan
     public function update(Request $request, Pelatihan $pelatihan)
     {
         //
     }
 
-    // hapus pelatihan
+    // hapus pelaporan
     public function destroy(Pelatihan $pelatihan)
     {
         //

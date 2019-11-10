@@ -2,7 +2,7 @@
 <html>
     
     <head>
-        <title>{{Auth::user()->name}}'s Dashboard</title>
+        <title>SIPPMI</title>
         <!-- Bootstrap -->
         <link href="{{ asset('template/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('template/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
@@ -10,6 +10,9 @@
         <link href="{{ asset('template/assets/DT_bootstrap.css') }}" rel="stylesheet" media="screen">
         <script src="{{ asset('template/vendors/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- ICON -->
+        <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.pmi.or.id/templates/pmi_pusat/images/favicon.ico"/>
     </head>
     
     <body>
@@ -20,7 +23,8 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Dashboard</a>
+                    <a class="brand" href="#"><img src="http://www.pmi.or.id/templates/pmi_pusat/images/favicon.ico" width="23"
+                    height="23"> Sistem Informasi Pelatih PMI</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">

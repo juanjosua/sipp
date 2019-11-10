@@ -33,6 +33,7 @@ Route::post('/pelatihan/create/store', 'PelatihanController@store');
 Route::get('/pelaporan', 'PelaporanController@index')->name('pelaporan')->middleware('verified');
 Route::get('/pelaporan/create', 'PelaporanController@create')->name('add-pelaporan')->middleware('verified');
 Route::post('/pelaporan/create/store', 'PelaporanController@store');
+Route::get('/downloadPDF','PelaporanController@downloadPDF')->name('unduh-pelaporan')->middleware('verified');
 
 //route admin
 Route::get('/users', 'AdminController@index')->name('users')->middleware('verified');

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>SIPPMI</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -62,6 +62,9 @@
                 margin-bottom: 30px;
             }
         </style>
+
+        <!-- ICON -->
+        <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.pmi.or.id/templates/pmi_pusat/images/favicon.ico"/>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -81,7 +84,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    SIPP
+                    <img src="{{  asset('template/images/pmi.png') }}" alt="Simply Easy Learning" width="332"
+         height="222.4">
                 </div>
                 <div>Sistem Informasi Pelatih PMI</div>
             </div>
