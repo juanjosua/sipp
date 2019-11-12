@@ -57,15 +57,23 @@
             <div class="row-fluid">
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+
+                        <li class="nav-button {{ Route::is('dashboard') ? 'active' : '' }}">
+                            <a class="nav-btn-a" href="{{ url('/dashboard') }}"><i class="icon-chevron-right"></i> Dashboard</a>
+                        </li>
+
                         <li class="nav-button {{ Route::is('profile') ? 'active' : '' }}">
                             <a class="nav-btn-a" href="{{ url('/profile') }}"><i class="icon-chevron-right"></i> Profile</a>
                         </li>
+
                         <li class="nav-button {{ Route::is('pelatihan') || Route::is('add-pelatihan') ? 'active' : '' }}">
                             <a class="nav-btn-a" href="{{ url('/pelatihan') }}"><i class="icon-chevron-right"></i> Pelatihan</a>
                         </li>
+
                         <li class="nav-button {{ Route::is('pelaporan') || Route::is('add-pelaporan') ? 'active' : '' }}">
                             <a class="nav-btn-a" href="{{ url('/pelaporan') }}"><i class="icon-chevron-right"></i> Pelaporan</a>
                         </li>
+
                         @if(Auth::user()->admin == true)
                         <li class="nav-button {{ Route::is('users') ? 'active' : '' }}">
                             <a class="nav-btn-a" href="{{ url('/users') }}"><i class="icon-chevron-right"></i> Users</a>
@@ -79,7 +87,28 @@
                 @yield('content')
                 
             </div>
+
+            <footer style="position:absolute; bottom:0; background:#EEEEEF; width:98%;">
+            <div style="display: table; margin: 0 auto;">
+                <br>
+                <div style="float: left;">
+                    <img src="{{  asset('template/images/pmi.png') }}" alt="Logo PMI" width="249" height="166.8">
+                </div>
+                <div style="float: right; padding-left: 100px;">
+                    <strong>MARKAS PUSAT PALANG MERAH INDONESIA</strong>
+                    <br><br>
+                    JL. Jend. Gatot Subroto Kav. 96 <br>
+                    Jakarta 12790 - Indonesia <br><br>
+                    <i class="icon-comment"></i> (021) 7992325 <br>
+                    <i class="icon-print"></i> (021) 7995188 <br>
+                    <i class="icon-envelope"></i> pmi.or.id <br>
+                    
+                </div>
+            </div>
             <hr>
+            <p style="float: right;">&copy; Palang Merah Indonesia. All rights reserved.</p>
+            </footer>
+
         </div>
         <!--/.fluid-container-->
         <link href="{{ asset('template/vendors/datepicker.css') }}" rel="stylesheet" media="screen">
